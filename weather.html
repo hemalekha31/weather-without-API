@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cont {
+            height: 5vh;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        select {
+            border: none;
+            border-radius: 3px;
+            padding: 10px;
+            background-color: rgb(212, 214, 214);
+        }
+
+        select:hover {
+            background-color: gray;
+            cursor: pointer;
+        }
+
+        .tempp {
+            display: grid;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        p {
+            background-color: beige;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        
+        .con2{
+            background-color: beige;
+            width: 200px;
+            margin-left: 550px;
+            padding: 10px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="con2">
+        <div class="cont">
+            <select name="waether" id="weather">
+                <option value="Coimbatore">Coimbatore</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Sivakasi">Sivakasi</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Delhi">Delhi</option>
+            </select>
+
+        </div>
+        <div class="tempp">
+            <p id="city"></p>
+            <p id="temp"></p>
+            <p id="condition"></p>
+            <p id="humidity"></p>
+        </div>
+    </div>
+    <script>
+        const data = {
+            Coimbatore: { temp: "24 Degree", condition: "Cloudy", humidity: "50%" },
+            Chennai: { temp: "32°C", condition: "Sunny", humidity: "60%" },
+            Sivakasi: { temp: "30°C", condition: "Hot", humidity: "40%" },
+            Mumbai: { temp: "28°C", condition: "Rainy", humidity: "75%" },
+            Delhi: { temp: "35°C", condition: "Dry", humidity: "30%" }
+        };
+
+        const select = document.getElementById("weather")
+        function updatewe() {
+            const cityname = select.value;
+            const citydata = data[cityname];
+            document.getElementById("city").innerHTML = `City: ${cityname}`;
+            document.getElementById("temp").innerHTML = `Temperature: ${citydata.temp}`;
+            document.getElementById("condition").innerHTML = `Condition: ${citydata.condition}`;
+            document.getElementById("humidity").innerHTML = `Humidity: ${citydata.humidity}`;
+        }
+        updatewe()
+        select.addEventListener("change", updatewe)
+    </script>
+</body>
+
+</html>
